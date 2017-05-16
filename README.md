@@ -1,4 +1,5 @@
 # Windows Git Tricks
+These trick assumes you have a remote named 'origin'
 
 ## Delete all local branches that have been merged into master
 ```
@@ -6,7 +7,6 @@ git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | F
 ```
 
 ## Delete remote branches with filter
-This trick assumes you have a remote named 'origin'
 ```
 git fetch --prune --all
 
