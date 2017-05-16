@@ -12,3 +12,9 @@ git fetch --prune --all
 
 git branch -r | where-object {$_.Contains('add a filter here')} | ForEach-Object { git push origin --delete $_.Split('/')[1] }
 ```
+
+## Find all branches (in remotes and local) that I have created
+Just replace 'Raph' with your name here
+```
+git for-each-ref --format=' %(authorname),%(refname)' | where-object { $_.Split(',')[0].Trim() -eq 'Raph' } | select-object { $_.Split(',')[1] }
+```
