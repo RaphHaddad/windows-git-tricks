@@ -18,3 +18,8 @@ Just replace 'Raph' with your name here
 ```
 git for-each-ref --format=' %(authorname),%(refname)' | where-object { $_.Split(',')[0].Trim() -eq 'Raph' } | select-object { $_.Split(',')[1] }
 ```
+
+## Stage all files for commit except those that are *.config at any level within your git repo
+```
+git status | Where-Object {$_.Contains("modified") -and !$_.Contains(".config")} | ForEach-Object { git add $_.Replace('modified:','').Trim() }
+```
