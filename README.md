@@ -23,3 +23,8 @@ git for-each-ref --format=' %(authorname),%(refname)' | where-object { $_.Split(
 ```
 git status | Where-Object {$_.Contains("modified") -and !$_.Contains(".config")} | ForEach-Object { git add $_.Replace('modified:','').Trim() }
 ```
+
+## Delete all remote branches that have been merged into master
+```
+git branch -r --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
+```
