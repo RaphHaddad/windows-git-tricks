@@ -6,6 +6,11 @@ These trick assumes you have a remote named 'origin'
 git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git branch -d $_.trim() }
 ```
 
+## Delete all local branches that are not master
+```
+it branch | where-object {!$_.EndsWith('master')} | foreach-object { git branch -D $_.Trim() }
+```
+
 ## Delete remote branches with filter
 ```
 git fetch --prune --all
