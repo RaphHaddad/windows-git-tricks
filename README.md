@@ -1,6 +1,11 @@
 # Windows Git Tricks
 These trick assumes you have a remote named 'origin'
 
+## Initialise git in working directory with latest Visual Studio .gitignore
+```
+git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore).Content | Out-File -FilePath .gitignore; git add -A
+```
+
 ## Delete all local branches that have been merged into master
 ```
 git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git branch -d $_.trim() }
