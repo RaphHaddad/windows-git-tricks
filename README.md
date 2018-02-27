@@ -13,7 +13,7 @@ git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | F
 
 ## Delete all local branches that are not master
 ```
-git branch | where-object {!$_.EndsWith('master')} | foreach-object { git branch -D $_.Trim() }
+git branch --no-contains "master" | ForEach-Object { git branch -D $_.Trim() }
 ```
 
 ## Delete remote branches with filter
