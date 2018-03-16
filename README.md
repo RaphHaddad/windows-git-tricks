@@ -16,6 +16,11 @@ git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | F
 git branch --no-contains "master" | ForEach-Object { git branch -D $_.Trim() }
 ```
 
+## Copy current branch to clipboard
+```
+(git branch | Where-Object { $_.Contains("*") } | Select-Object -First 1).Trim('*').Trim() | Set-Clipboard
+```
+
 ## Delete remote branches with filter
 ```
 git fetch --prune --all
