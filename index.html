@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h1>Windows Git Tricks</h1>
+        <p>These trick assumes you have a remote named 'origin'</p>
+        <div>
+            <h2>Initialise git in working directory with latest Visual Studio .gitignore</h2>
+            <code>git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A</code>
+            <button class="copy-button">Copy to clipboard</button>
+        </div>
+    </body>
+    <script>
+            var copyButton = document.querySelector('.copy-button');
+    
+            copyButton.addEventListener('click', function (event) {
+                var textToCopy = this.parentElement.querySelector('code').innerText;
+                alert(textToCopy);
+            });
+    </script>
+</html>
