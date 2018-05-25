@@ -12,12 +12,17 @@
             <code>More code</code><br/>
             <button class="copy-button">Copy to clipboard</button>
         </div>
+        <input type="text" id="text-to-copy-input">
     </body>
     <script>
             var copyButtons = document.querySelectorAll('.copy-button');
             copyButtons.forEach(function(copyButton) {
                 copyButton.addEventListener('click', function() {
                     var theText = copyButton.parentElement.querySelector('code').innerText;
+                    var textToCopyInput = document.getElementById('text-to-copy-input');
+                    textToCopyInput.value = theText;
+                    textToCopyInput.select();
+                    document.execCommand("copy");
                     alert(theText);
                 });
             });
