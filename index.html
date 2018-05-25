@@ -7,13 +7,19 @@
             <code>git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A</code>
             <button class="copy-button">Copy to clipboard</button>
         </div>
+        <div>
+            <h2>Another title</h2>
+            <code>More code</code><br/>
+            <button class="copy-button">Copy to clipboard</button>
+        </div>
     </body>
     <script>
-            var copyButton = document.querySelector('.copy-button');
-    
-            copyButton.addEventListener('click', function (event) {
-                var textToCopy = this.parentElement.querySelector('code').innerText;
-                alert(textToCopy);
+            var copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(function(copyButton) {
+                copyButton.addEventListener('click', function() {
+                    var theText = copyButton.parentElement.querySelector('code').innerText;
+                    alert(theText);
+                });
             });
     </script>
 </html>
