@@ -1,29 +1,30 @@
 <html>
+    <style>
+        .stretch {
+            width: 100%;
+            display: block;
+        }
+    </style>
     <body>
         <h1>Windows Git Tricks</h1>
         <p>These trick assumes you have a remote named 'origin'</p>
         <div>
             <h2>Initialise git in working directory with latest Visual Studio .gitignore</h2>
-            <code>git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A</code>
-            <button class="copy-button">Copy to clipboard</button>
+            <input type="text" class="code stretch" value="git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A" >
+            <button class="copy-button stretch">Copy to clipboard</button>
         </div>
         <div>
-            <h2>Another title</h2>
-            <code>More code</code><br/>
-            <button class="copy-button">Copy to clipboard</button>
+            <h2>More code</h2>
+            <input type="text" class="code stretch" value="more code" >
+            <button class="copy-button stretch">Copy to clipboard</button>
         </div>
-        <input type="text" id="text-to-copy-input">
     </body>
     <script>
             var copyButtons = document.querySelectorAll('.copy-button');
             copyButtons.forEach(function(copyButton) {
                 copyButton.addEventListener('click', function() {
-                    var theText = copyButton.parentElement.querySelector('code').innerText;
-                    var textToCopyInput = document.getElementById('text-to-copy-input');
-                    textToCopyInput.value = theText;
-                    textToCopyInput.select();
+                    copyButton.parentElement.querySelector('.code').select();
                     document.execCommand("copy");
-                    alert(theText);
                 });
             });
     </script>
