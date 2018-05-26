@@ -2,7 +2,7 @@
 These trick assumes you have a remote named 'origin'
 
 ## Initialise git in working directory with latest Visual Studio .gitignore
-```git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A```
+    git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A
 
 ## Delete all local branches that have been merged into master
 ```
