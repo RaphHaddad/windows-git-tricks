@@ -1,20 +1,9 @@
-$lines = Get-Content .\README.md
+$file = Get-Content .\README.md
+
+$html = (Get-Content .\README.md) `
+                -replace '^## (.+)', '<h2>$1</h2>'
+
+$html = $html -replace '(?ms)```(.*?)', '<code>'
 
 
-$bodyHtml = ""
-$hasStartedNewSnipet = $false
-$hasStartedNewCodeBlock = $false
-foreach ($line in $lines) {
-    if ($line.StartsWith('## ')) {
-        $hasStartedNewSnipet = $true
-        $line = $line.Trim('## ')
-        $bodyHtml += "<div><h2>$line</h2>"
-    } 
-
-    if (-not $line -and $hasStartedNewSnipet -and -not $hasStartedNewCodeBlock) {
-        $bodyHtml += "</div>"
-        $hasStartedNewSnipet = $false
-    }
-}
-
-Write-Host "$bodyHtml"
+Write-Host "$html"
