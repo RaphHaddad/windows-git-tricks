@@ -9,4 +9,4 @@ $html = (Get-Content .\README.md) `
 $page = (Get-Content .\page-template.html) `
             -replace '%%body_html%%', $html
 
-$page | Out-File -FilePath .\Git-Tricks.html
+$page | Out-File -FilePath .\git-tricks.html
