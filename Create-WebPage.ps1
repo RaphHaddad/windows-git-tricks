@@ -6,7 +6,6 @@ $html = (Get-Content .\README.md) `
                 -replace '<h2>', '<div><h2>' `
                 -replace '</button>', '</div>'
 
-$page = (Get-Content .\page-template.html) `
-            -replace '%%body_html%%', $html
+$page = (Get-Content .\page-template.html).Replace('{{body_html}}', $html)
 
 $page | Out-File -FilePath .\git-tricks.html
