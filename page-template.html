@@ -1,0 +1,27 @@
+<html>
+    <style>
+        .stretch {
+            width: 100%;
+            display: block;
+        }
+    </style>
+    <body>
+        {{body_html}}
+        <footer>
+                <p>
+                    <a href="https://www.raph.ws/" target="_blank">Raphael Haddad</a> project | 
+                    <a href="https://twitter.com/RaphHaddadAus" target="_blank">Bugs or suggestions? |</a>
+                    <a href="https://github.com/RaphHaddad/windows-git-tricks" target="_blank">Source (GitHub)</a>
+                </p>
+            </footer>
+    </body>
+    <script>
+            var copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(function(copyButton) {
+                copyButton.addEventListener('click', function() {
+                    copyButton.parentElement.querySelector('.code').select();
+                    document.execCommand("copy");
+                });
+            });
+    </script>
+</html>
