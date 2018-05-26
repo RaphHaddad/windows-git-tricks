@@ -18,6 +18,7 @@ These trick assumes you have a remote named 'origin'
 
 ## Find all branches (in remotes and local) that I have created
 Just replace 'Raph' with your name here
+
     git for-each-ref --format=' %(authorname),%(refname)' | where-object { $_.Split(',')[0].Trim() -eq 'Raph' } | select-object { $_.Split(',')[1] }
 
 ## Stage all files for commit except those that are *.config at any level within your git repo
