@@ -1,7 +1,7 @@
 # Windows Git Tricks
 These trick assumes you have a remote named 'origin'
 
-[Website version] with 'copy to clipboard' buttons(https://gittricks.raph.ws/)
+[Website version with 'copy to clipboard' buttons](https://gittricks.raph.ws/)
 
 ## Initialise git in working directory with latest Visual Studio .gitignore
     git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A
