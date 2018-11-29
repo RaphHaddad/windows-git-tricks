@@ -10,7 +10,7 @@ These trick assumes you have a remote named 'origin'
     git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git branch -d $_.trim() }
 
 ## Delete all local branches that are not master
-    git branch | Where-Object { !$_.Contains("master") } | ForEach-Object { git branch -D $_.Trim() }
+    git branch | Where-Object { !$_.Contains('master') } | ForEach-Object { git branch -D $_.Trim() }
 
 ## Copy current branch to clipboard
     (git branch | Where-Object { $_.Contains('*') } | Select-Object -First 1).Trim('*').Trim() | Set-Clipboard
