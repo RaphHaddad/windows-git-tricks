@@ -33,4 +33,4 @@ Just replace 'Raph' with your name here
     git fetch --prune; git branch -r --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
     
 ## Pull multiple repositories in child folders (a.k.a. I'm back from a leave script)
-    gci -Directory | foreach {Push-Location $_.Name; git fetch --all; git checkout master; git pull; Pop-Location}
+    gci -Directory | foreach {Push-Location $_.Name; git fetch --all; git add .; git stash; git checkout master; git pull; Pop-Location} 
