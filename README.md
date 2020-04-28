@@ -37,9 +37,13 @@ Just replace 'Raph' with your name here
 
     git status | Where-Object {$_.Contains('modified') -and !$_.Contains('.config')} | ForEach-Object { git add $_.Replace('modified:','').Trim() }
 
-## Delete all remote branches
+## Delete all remote branches that are not master
 
     git fetch --prune; git branch -r | Where-Object {  !$_.Contains('master') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
+    
+## Delete all remote branches that are not master (linux/mac)
+
+    git fetch --prune | git branch -r | grep -v 'master' | sed 's/origin\///' | sed 's/^[ \t]*//;s/[ \t]*$//' | xargs -L1 git push origin --delete
 
 ## Delete all remote branches that have been merged into master
 
