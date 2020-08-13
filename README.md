@@ -5,19 +5,19 @@ These trick assumes you have a remote named 'origin'
 
 ## Initialise git in working directory with latest Visual Studio .gitignore
 
-    git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A
+    git init; (Invoke-WebRequest https://raw.githubusercontent.com/github/gitignore/main/VisualStudio.gitignore -UseBasicParsing).Content | Out-File -FilePath .gitignore -Encoding utf8; git add -A
 
-## Delete all local branches that have been merged into master
+## Delete all local branches that have been merged into main
 
-    git branch --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git branch -d $_.trim() }
+    git branch --merged origin/main | Where-Object {  !$_.Contains('main') } | ForEach-Object { git branch -d $_.trim() }
 
-## Delete all local branches that are not master
+## Delete all local branches that are not main
 
-    git branch | Where-Object { !$_.Contains('master') } | ForEach-Object { git branch -D $_.Trim() }
+    git branch | Where-Object { !$_.Contains('main') } | ForEach-Object { git branch -D $_.Trim() }
 
-## On Delete all local branches that are not master(Linux/Mac)
+## On Delete all local branches that are not main(Linux/Mac)
 
-    git branch | grep -v 'master' | xargs -L1 git branch -D
+    git branch | grep -v 'main' | xargs -L1 git branch -D
 
 ## Copy current branch to clipboard
 
@@ -37,18 +37,18 @@ Just replace 'Raph' with your name here
 
     git status | Where-Object {$_.Contains('modified') -and !$_.Contains('.config')} | ForEach-Object { git add $_.Replace('modified:','').Trim() }
 
-## Delete all remote branches that are not master
+## Delete all remote branches that are not main
 
-    git fetch --prune; git branch -r | Where-Object {  !$_.Contains('master') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
+    git fetch --prune; git branch -r | Where-Object {  !$_.Contains('main') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
     
-## Delete all remote branches that are not master (linux/mac)
+## Delete all remote branches that are not main (linux/mac)
 
-    git fetch --prune | git branch -r | grep -v 'master' | sed 's/origin\///' | sed 's/^[ \t]*//;s/[ \t]*$//' | xargs -L1 git push origin --delete
+    git fetch --prune | git branch -r | grep -v 'main' | sed 's/origin\///' | sed 's/^[ \t]*//;s/[ \t]*$//' | xargs -L1 git push origin --delete
 
-## Delete all remote branches that have been merged into master
+## Delete all remote branches that have been merged into main
 
-    git fetch --prune; git branch -r --merged origin/master | Where-Object {  !$_.Contains('master') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
+    git fetch --prune; git branch -r --merged origin/main | Where-Object {  !$_.Contains('main') } | ForEach-Object { git push origin --delete $_.Split('/')[1] }
     
 ## Pull multiple repositories in child folders (a.k.a. I'm back from a leave script)
 
-    gci -Directory | foreach {Push-Location $_.Name; git fetch --all; git add .; git stash; git checkout master; git pull; Pop-Location} 
+    gci -Directory | foreach {Push-Location $_.Name; git fetch --all; git add .; git stash; git checkout main; git pull; Pop-Location} 
