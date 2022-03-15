@@ -14,6 +14,12 @@ These trick assumes you have a remote named 'origin'
 
     git branch | grep -v 'main' | xargs -L1 git branch -D
 
+### Find all branches (in remotes and local) that I have created
+
+Replace 'raph' with your name here
+
+    git for-each-ref --format=' %(authorname),%(refname)' | grep -i 'raph'
+
 ## Windows Tricks
 
 ### Initialise git in working directory with latest Visual Studio .gitignore
