@@ -20,6 +20,10 @@ Replace 'raph' with your name here
 
     git for-each-ref --format=' %(authorname),%(refname)' | grep -i 'raph'
 
+### Delete all branches in remote that have the pattern `feature/deployable/`
+
+    git branch -r | grep 'origin/feature/deployable' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
+
 ## Windows Tricks
 
 ### Initialise git in working directory with latest Visual Studio .gitignore
