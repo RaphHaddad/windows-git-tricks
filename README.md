@@ -10,6 +10,10 @@ These trick assumes you have a remote named 'origin'
 
     git fetch --prune | git branch -r | grep -v 'main' | sed 's/origin\///' | sed 's/^[ \t]*//;s/[ \t]*$//' | xargs -L1 git push origin --delete
 
+### On Delete all local branches that are not main or 'other-branch'
+
+    git branch | grep -v 'main' | grep -v 'other-branch' | xargs -L1 git branch -D
+
 ### On Delete all local branches that are not main
 
     git branch | grep -v 'main' | xargs -L1 git branch -D
